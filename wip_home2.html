@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/wip.css" >
+    <script src="js/jquery-3.6.0.min.js" ></script>
+    <script src="js/bootstrap.bundle.min.js" ></script>
+    <script src="js/wip.js"></script>
+</head>
+<html>
+<body>
+
+     <!-- header 表頭功能   -->
+     <div class="flex-column"> 
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark nav__bg">
+            <div class="container">
+                <a class="navbar-brand navbar__brand" href="#">生產狀態即時系統 (WIP)</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-control="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item pt-3" >
+                            <a href="#" class="nav-link" >CP</a>
+                        </li>
+                        <li class="nav-item pt-3" >
+                            <a href="#" class="nav-link active">PKG</a>
+                        </li>
+                        <li class="nav-item pt-3" >
+                            <a href="#" class="nav-link">FT</a>
+                        </li>
+
+                        <li class="nav-item pt-3 pl-5" >
+                            <a href="#" class="nav-link">Logout</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- 顯示  各家 廠商 WIP Tab 顯示頁面   class: header 定義了 padding-top:90px 功能表 方可 不被 header 遮住  -->
+        <header class="header"> 
+          <div class="container-fluid">
+
+            <div class="row tool_row">
+              <div class="col">
+                 <a href="#" id="btn_show_rule" class="px-2 btn_tool" data-bs-toggle="tooltip" data-bs-placement="top" title="顏色說明">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-text" viewBox="0 0 16 16">
+                      <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                      <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                 </a>
+                 <a href="#" id="btn_show_order" class="px-2 btn_tool" data-bs-toggle="tooltip" data-bs-placement="top" title="資料排序">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-down-alt" viewBox="0 0 16 16">
+                      <path d="M3.5 3.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 12.293V3.5zm4 .5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1h-3zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1h-5zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5z"/>
+                    </svg>
+                 </a>
+                 <a href="#" id="btn_search_rule" class="px-2 btn_tool" data-bs-toggle="tooltip" data-bs-placement="top" title="查詢條件" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-binoculars" viewBox="0 0 16 16">
+                      <path d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V2.5zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5h-1zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V4zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V3zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14z"/>
+                    </svg>
+                 </a>
+                 <a href="#" id="btn_download_rule" class="px-2 btn_tool" data-bs-toggle="tooltip" data-bs-placement="top" title="下載為Excel檔" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-down" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"/>
+                      <path fill-rule="evenodd" d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
+                    </svg>
+                 </a>
+
+
+              </div>
+            </div>
+
+            <div class="row rule_desc" id="div_rule_desc" >
+              <div class="col-12">
+                  <ul class="rule">
+                    <li class="rule rule_g">1. 廠商正常資料 </li>
+                    <li class="rule rule_y">2. 同一站點超過設定時間 </li>
+                    <li class="rule rule_o">3. 同一站點超過設定時間7~13天 </li>
+                    <li class="rule rule_r">4. 同一站點超過設定時間14天以上 </li>
+                    <li class="rule rule_w">5. Hold_Wafer bank & Die Bank ( po_no 判斷 ) </li>
+                  </ul>
+              </div>
+            </div>
+
+            <div class="row query__term" id="div_query_term" >
+              <div class="col">
+                 <span >查詢條件:</span>
+                 <div class="div__cust_device">
+                    <span> cust_device: </span>
+                    <input class="qry__item" id="qry_cust_device" name="qry_cust_device" value="">
+                    <span> lot_no: </span>
+                    <input class="qry__item" id="qry_lot_no" name="qry_lot_no" value="">
+                </div>
+
+                 <input type="submit" class="btn btn-secondary btn-sm py-1" id="btn_query_apply" value="Search"> 
+              </div>
+            </div>
+        
+
+
+            <!-- 各 vendor 選單 -->
+            <nav>
+                <div class="nav nav-tabs nav__tab" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-ase-tab" data-toggle="tab" href="#nav-ase" role="tab" aria-controls="nav-ase" aria-selected="true">ASE </a>
+                  <a class="nav-item nav-link" id="nav-grea-tab" data-toggle="tab" href="#nav-grea" role="tab" aria-controls="nav-grea" aria-selected="false">GREA</a>
+                  <a class="nav-item nav-link" id="nav-lpi-tab" data-toggle="tab" href="#nav-lpi" role="tab" aria-controls="nav-lpi" aria-selected="false">LPI </a>
+                  <a class="nav-item nav-link" id="nav-ticp-tab" data-toggle="tab" href="#nav-ticp" role="tab" aria-controls="nav-ticp" aria-selected="false">TICP </a>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                 <div class="tab-pane fade show active" id="nav-ase" role="tabpanel" aria-labelledby="nav-ase-tab">
+                    <!-- 顯示 ASE WIP -->
+                    <section class="content-area px-2">
+                        <div class="table-area border border-secondary rounded table-responsive text-nowrap scrollme ">
+                          <table class="responsive-table table table-sm table-bordered border-secondary table-hover table__wip">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th class="th2">#</th>
+                                <th class="th2">Cust Device</th>
+                                <th class="th2">LOT_NO</th>
+                                <th class="th2">RCV_DATE</th>
+                                <th class="th2">RCV_QTY</th>
+                                <th class="th2">PO_NO</th>
+                                <th class="th2">CONF_D</th>
+                                <th class="th2">CONF_Q</th>
+                                <th class="th2">SHIP_L</th>
+                                <th class="th2">預計回貨日</th>
+                                <th class="th2">生管採確編號</th>
+                                <th class="th2">BONDING</th>
+                                <th class="th2">PKG_TYPE</th>
+                                <th class="th2">PKG_LC</th>
+                                <th class="th2">HOLD_W</th>
+                                <th class="th2">W/G</th>
+                                <th class="th2">D/B</th>
+                                <th class="th2">W/B</th>
+                                <th class="th2">MOLD</th>
+                                <th class="th2">MARK</th>
+                                <th class="th2">TRIM</th>
+                                <th class="th2">PLATING</th>
+                                <th class="th2">FORM</th>
+                                <th class="th2">F/V</th>
+                                <th class="th2">PACK</th>
+                                <th class="th2">STOCK</th>
+                                <th class="th2">D/C</th>
+                                <th class="th2">REQ_D</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr class="class_red">
+                                <th scope="row">001</th>
+                                <td>F-7309D008HH0C7Y</td>
+                                <td>STN126.1</td>
+                                <td>2021/01/26</td>
+                                <td>9</td>
+                                <td>156-62100160-10</td>
+                                <td>2021/03/10</td>
+                                <td>1671</td>
+                                <td>GLI</td>
+                                <td>2021-04-12</td>
+                                <td>21C0127</td>
+                                <td>GLI7309-HH6Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>1671</td>
+                                <td>2106</td>
+                                <td>2021/02/09</td>
+                              </tr>
+                              <tr class="class_orange">
+                                <td scope="row">002</th>
+                                <td>F-7345B005HH0C4Y</td>
+                                <td>STR622.1</td>
+                                <td>2021/03/11</td>
+                                <td>25</td>
+                                <td>156-62100445-10</td>
+                                <td>2021/05/12</td>
+                                <td>440</td>
+                                <td>GLI</td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>449</td>
+                                <td class="text-right">0</td>
+                                <td>2111</td>
+                                <td>2021/03/18</td>
+                              </tr>
+                              <tr class="class_yellow">
+                                <td scope="row">003</th>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr class="class_green">
+                                <th scope="row">004</th>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr class="class_white">
+                                <td scope="row">005</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">006</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">007</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">008</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">011</td>
+                                <td>F-7309D008HH0C7Y</td>
+                                <td>STN126.1</td>
+                                <td>2021/01/26</td>
+                                <td>9</td>
+                                <td>156-62100160-10</td>
+                                <td>2021/03/10</td>
+                                <td>1671</td>
+                                <td>GLI</td>
+                                <td>2021-04-12</td>
+                                <td>21C0127</td>
+                                <td>GLI7309-HH6Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>1671</td>
+                                <td>2106</td>
+                                <td>2021/02/09</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">012</td>
+                                <td>F-7345B005HH0C4Y</td>
+                                <td>STR622.1</td>
+                                <td>2021/03/11</td>
+                                <td>25</td>
+                                <td>156-62100445-10</td>
+                                <td>2021/05/12</td>
+                                <td>440</td>
+                                <td>GLI</td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>449</td>
+                                <td class="text-right">0</td>
+                                <td>2111</td>
+                                <td>2021/03/18</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">013</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">014</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">015</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">016</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">017</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">018</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>  
+                              <tr>
+                                <td scope="row">001</td>
+                                <td>F-7309D008HH0C7Y</td>
+                                <td>STN126.1</td>
+                                <td>2021/01/26</td>
+                                <td>9</td>
+                                <td>156-62100160-10</td>
+                                <td>2021/03/10</td>
+                                <td>1671</td>
+                                <td>GLI</td>
+                                <td>2021-04-12</td>
+                                <td>21C0127</td>
+                                <td>GLI7309-HH6Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>1671</td>
+                                <td>2106</td>
+                                <td>2021/02/09</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">002</td>
+                                <td>F-7345B005HH0C4Y</td>
+                                <td>STR622.1</td>
+                                <td>2021/03/11</td>
+                                <td>25</td>
+                                <td>156-62100445-10</td>
+                                <td>2021/05/12</td>
+                                <td>440</td>
+                                <td>GLI</td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>449</td>
+                                <td class="text-right">0</td>
+                                <td>2111</td>
+                                <td>2021/03/18</td>
+                              </tr>
+                              <tr>
+                                <td>003</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td>024</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td>025</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td>026</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td>027</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>
+                              <tr>
+                                <td>028</td>
+                                <td>F-7345E006HH0C6Y</td>
+                                <td>SUA962.1</td>
+                                <td>2021/06/30</td>
+                                <td>8</td>
+                                <td>156-62101250-10</td>
+                                <td>2049/12/31</td>
+                                <td class="text-right">0</td>
+                                <td></td>
+                                <td> </td>
+                                <td> </td>
+                                <td>GLI7345-HH8Y</td>
+                                <td>SSOP</td>
+                                <td>28L</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td>2127</td>
+                                <td>2029/12/31</td>
+                              </tr>                     
+                            </tbody>
+                          </table>
+                        </div>
+                    </section>
+                 </div>
+                 <div class="tab-pane fade" id="nav-grea" role="tabpanel" aria-labelledby="nav-grea-tab">
+                    <!-- 顯示 GREA WIP -->
+                    <section class="content-area px-2">
+                      <div class="table-area table-responsive border border-secondary rounded text-nowrap scrollme " >
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead class="thead-dark ">
+                              <tr>
+                                <th scope="col" class="text-center">#</th>
+                                <th scope="col" class="text-center">First</th>
+                                <th scope="col" class="text-center">Last</th>
+                                <th scope="col" class="text-center">Handle</th>
+                                <th scope="col" class="text-center">Handle</th>
+                                <th scope="col" class="text-center">Handle</th>
+                                <th scope="col" class="text-center">Handle</th>
+                                <th scope="col" class="text-center">Handle</th>
+                                <th scope="col" class="text-center">WG</th>
+                                <th scope="col" class="text-center">DG</th>
+                                <th scope="col" class="text-center">WB</th>
+                                <th scope="col" class="text-center">MOLD</th>
+                                <th scope="col" class="text-center">DIE</th>
+                                <th scope="col" class="text-center">BAND</th>
+                                <th scope="col" class="text-center">FV</th>
+                                <th scope="col" class="text-center">STOCK</th>
+                                <th scope="col" class="text-center">Proc</th>
+                                <th scope="col" class="text-center">Final</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row" class="text-center">1</th>
+                                <td class="text-center">Mark</td>
+                                <td class="text-center">Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td class="text-center">2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="text-center">2</th>
+                                <td class="text-center">Jacob</td>
+                                <td class="text-center">Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>Otto</td>
+                                <td class="text-center">2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="text-center">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>Otto</td>
+                                <td>2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="text-center">4</th>
+                                <td>Kevin</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>Otto</td>
+                                <td>2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>  
+                              <tr>
+                                <th scope="row" class="text-center">5</th>
+                                <td>Liu</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>Otto</td>
+                                <td>2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>  
+                              <tr>
+                                <th scope="row" class="text-center">6</th>
+                                <td class="text-center">Jacob</td>
+                                <td class="text-center">Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>Otto</td>
+                                <td class="text-center">2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>    
+                              <tr>
+                                <th scope="row" class="text-center">7</th>
+                                <td class="text-center">Mark</td>
+                                <td class="text-center">Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td class="text-center">2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="text-center">8</th>
+                                <td class="text-center">Jacob</td>
+                                <td class="text-center">Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>Otto</td>
+                                <td class="text-center">2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="text-center">9</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>Otto</td>
+                                <td>2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="text-center">10</th>
+                                <td>Kevin</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>Otto</td>
+                                <td>2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>  
+                              <tr>
+                                <th scope="row" class="text-center">11</th>
+                                <td>Liu</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>Otto</td>
+                                <td>2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>  
+                              <tr>
+                                <th scope="row" class="text-center">12</th>
+                                <td class="text-center">Jacob</td>
+                                <td class="text-center">Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>Otto</td>
+                                <td class="text-center">2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr> 
+                              <tr>
+                                <th scope="row" class="text-center">13</th>
+                                <td class="text-center">Mark</td>
+                                <td class="text-center">Otto</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>@mdo</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td class="text-center">2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="text-center">14</th>
+                                <td class="text-center">Jacob</td>
+                                <td class="text-center">Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>Otto</td>
+                                <td class="text-center">2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="text-center">15</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>Otto</td>
+                                <td>2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>
+                              <tr>
+                                <th scope="row" class="text-center">16</th>
+                                <td>Kevin</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>Otto</td>
+                                <td>2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>  
+                              <tr>
+                                <th scope="row" class="text-center">17</th>
+                                <td>Liu</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>@twitter</td>
+                                <td>Otto</td>
+                                <td>2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>  
+                              <tr>
+                                <th scope="row" class="text-center">18</th>
+                                <td class="text-center">Jacob</td>
+                                <td class="text-center">Thornton</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>@fat</td>
+                                <td>Otto</td>
+                                <td class="text-center">2021/07/19</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                                <td class="text-right">0</td>
+                              </tr>                                                                                                                 
+                            </tbody>
+                        </table>
+                      </div>
+ 
+                    </section>
+                
+                 </div>
+                 <div class="tab-pane fade" id="nav-lpi" role="tabpanel" aria-labelledby="nav-lpi-tab">
+                    <!-- 顯示 LPI 的 WIP -->
+                    LPI WIP Data 
+                 </div>
+                 <div class="tab-pane fade" id="nav-ticp" role="tabpanel" aria-labelledby="nav-ticp-tab">
+                    <!-- 顯示 TICP 的 WIP -->
+                    
+                    <section class="content-area px-2">
+
+                      <div class="table-responsive text-nowrap">
+                        <!--Table-->
+                        <table class="table table-striped">
+                
+                          <!--Table head-->
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Name</th>
+                              <th>Surname</th>
+                              <th>Country</th>
+                              <th>City</th>
+                              <th>Position</th>
+                              <th>Age</th>
+                              <th>Position2</th>
+                            </tr>
+                          </thead>
+                          <!--Table head-->
+                
+                          <!--Table body-->
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Kate</td>
+                              <td>Moss</td>
+                              <td>USA / The United Kingdom / China / Russia </td>
+                              <td>New York City / Warsaw / Lodz / Amsterdam / London / Chicago</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                              <td>23</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                            </tr>
+                            <tr class="class_red">
+                              <th scope="row">2</th>
+                              <td>Anna</td>
+                              <td>Wintour</td>
+                              <td>USA / The United Kingdom / China / Russia </td>
+                              <td>New York City / Warsaw / Lodz / Amsterdam / London / Chicago</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                              <td>36</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                            </tr>
+                            <tr class="class_orange">
+                              <th scope="row">3</th>
+                              <td>Tom</td>
+                              <td>Bond</td>
+                              <td>USA / The United Kingdom / China / Russia </td>
+                              <td>New York City / Warsaw / Lodz / Amsterdam / London / Chicago</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                              <td>25</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                            </tr>
+                            <tr class="class_green">
+                              <th scope="row">4</th>
+                              <td>Jerry</td>
+                              <td>Horwitz</td>
+                              <td>USA / The United Kingdom / China / Russia </td>
+                              <td>New York City / Warsaw / Lodz / Amsterdam / London / Chicago</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                              <td>41</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                            </tr>
+                            <tr class="class_yellow">
+                              <th scope="row">5</th>
+                              <td>Janis</td>
+                              <td>Joplin</td>
+                              <td>USA / The United Kingdom / China / Russia </td>
+                              <td>New York City / Warsaw / Lodz / Amsterdam / London / Chicago</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                              <td>39</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">6</th>
+                              <td>Gary</td>
+                              <td>Winogrand</td>
+                              <td>USA / The United Kingdom / China / Russia </td>
+                              <td>New York City / Warsaw / Lodz / Amsterdam / London / Chicago</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                              <td>37</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">7</th>
+                              <td>Angie</td>
+                              <td>Smith</td>
+                              <td>USA / The United Kingdom / China / Russia </td>
+                              <td>New York City / Warsaw / Lodz / Amsterdam / London / Chicago</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                              <td>52</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">8</th>
+                              <td>John</td>
+                              <td>Mattis</td>
+                              <td>USA / The United Kingdom / China / Russia </td>
+                              <td>New York City / Warsaw / Lodz / Amsterdam / London / Chicago</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                              <td>28</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">9</th>
+                              <td>Otto</td>
+                              <td>Morris</td>
+                              <td>USA / The United Kingdom / China / Russia </td>
+                              <td>New York City / Warsaw / Lodz / Amsterdam / London / Chicago</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                              <td>35</td>
+                              <td>Web Designer /UX designer / Ul designer / JavaScript Developer</td>
+                            </tr>
+                          </tbody>
+                          <!--Table body-->
+                
+                
+                        </table>
+                        <!--Table-->
+                      </div>
+                    </section>
+
+                 </div>                
+              </div>
+          </div>
+        </header>
+
+    </div>
+    <article>
+        Kevin is article.
+
+    </article>
+
+    <footer class="footer">
+
+    </footer>
+</body>
+</html>
+

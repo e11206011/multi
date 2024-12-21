@@ -1,0 +1,76 @@
+
+
+.navbar__icon-bar {
+    border-color: gray;
+    width: 22px;
+    height: 2px;
+    background-color: gray;
+    display: block;
+    transition: all 0.3s ease-in-out;
+    margin: 4px 0;
+    color: cornsilk;
+     
+}
+
+.my__btn {
+    background-color: black;
+}
+
+.memu__bar{
+    background-color: black;
+}
+
+.navbar-toggler[type="button"]{
+    border-color: #000000;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.navbar-toggler[aria-expanded="false"]:hover 
+.navbar__icon-bar:nth-child(1) {
+    transform: translateY(-0.2rem);
+}
+    
+.navbar-toggler[aria-expanded="false"]:hover 
+.navbar__icon-bar:nth-child(2) {
+    transform: translateY(0.15rem);
+}
+
+.navbar-toggler[aria-expanded="true"]
+.navbar__icon-bar {
+    transform: rotate(0);
+}
+
+.navbar-toggler[aria-expanded="true"]:hover 
+.navbar__icon-bar:nth-child(1) {
+    transform: rotate(45deg);
+    transform-origin: 29% 10%;
+}
+    
+.navbar-toggler[aria-expanded="true"]:hover 
+.navbar__icon-bar:nth-child(2) {
+    transform: rotate(-45deg);
+    transform-origin: 29% 90%;
+}  
+
+.navbar-nav__full-screen {
+    height: 100vh;
+    margin-top: 2em;
+}
+ 
+.nav__item {
+    color: cornsilk;
+
+}
+
+.myText {
+    color: rgb(248, 0, 0);
+    background-color: rgb(174, 182, 192);
+}
+
+.class_sa201 {
+    color: blue;
+    text-decoration: none;
+}

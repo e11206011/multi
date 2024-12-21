@@ -1,0 +1,77 @@
+
+.nav__bg {
+    background-color: rgb(8, 98, 158); 
+}
+
+.navbar__brand {
+    color: rgb(199, 197, 197);
+    font-family: 微軟正黑體, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.header {
+    margin-top: 40px;
+}
+
+.head__image {
+   
+    padding-top: 50px;
+    width: 550px;
+    height: 430px;
+}
+
+.picture {
+    width: 250px;
+    height: 250px;
+}
+
+.divider--light2 {
+    border-color: black;
+    width: 350px;
+}
+
+.divider--light {
+    border-color: rgba(211, 43, 37, 0.836);
+    width: 400px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    left: 5px;
+}
+
+.divider__light {
+    border-color: rgba(37, 92, 211, 0.836);
+    width: 130px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    align-items: left;
+}
+
+.order_by {
+      display: none;
+}
+
+.order_list {
+    border-bottom: 1px solid rgba(105, 105, 105, 0.836);
+    padding: 3px 3px;
+    
+}
+
+.a_field_title{
+    color: white;
+    cursor: pointer;
+}
+.a_field_title:hover {
+    color: yellow;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.order__item {
+    list-style-type: none;
+    padding: 1px 1px 1px 1px;
+    margin: 1px;
+}

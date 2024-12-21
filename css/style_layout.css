@@ -1,0 +1,213 @@
+html {
+    background-color:rgb(88, 163, 85);
+    box-sizing: border-box;
+}
+*:before,:after {
+    box-sizing: inherit;
+
+}
+
+body {
+    font-family: Tahoma, sans-serif;
+    font-size: 87%;
+    /* text-align: center; */
+    padding-left: 140px;
+    padding-right: 140px;
+}
+
+.panel {
+    display: none;
+}
+
+
+.container {
+    background: #383b39 url("../images/tile.jpg") left bottom repeat-x, url("../images/tile.jpg") left top repeat-x ;
+}
+
+.header {
+    margin: 0;  
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #000000;
+    background: #383b39 url("../images/ship.jpg") right center no-repeat;
+}
+
+.header-title {
+    margin: 0;
+    font-weight: normal;
+    font-size: 200%;
+    
+}
+
+.header-desc {
+    margin: 0;
+}
+
+.content_area{
+    display: flex;
+    padding-left: 140px;
+    padding-right: 140px;
+    /* max-width: 940px; */
+    background: url("../images/tile.jpg")  left top repeat-x ;
+
+}
+
+.main_area{
+    width: 30%;
+
+}
+
+.sidebar {
+    width: 70%;
+
+}
+
+.footer {
+    text-align:center;
+    font-size:60%;
+    padding-top: 5px;
+    background: url("../images/tile.jpg")  left bottom repeat-x ;
+}
+
+.nav {
+    margin-top: 20px;
+    /* position: relative; */
+}
+
+.nav-list {
+    display: flex;
+    margin: 0;  
+    padding: 0;
+    /* position: relative; */
+}
+
+.nav-list-item {
+    list-style: none;
+    margin-right: 5px;
+} 
+
+/* .nav-list-item:hover .nav-sublist {
+    display: block;
+} */
+
+.nav-list-item-link {
+    display: block;
+    color:rgb(155, 155, 155);
+    background-color:rgba(41, 40, 40, 0.836);
+    text-decoration: none;
+    padding: 10px 20px;
+     
+
+}
+
+.nav-list-item-link:hover {
+    
+    color:rgb(187, 247, 164);
+    /* background-color:rgba(226, 200, 200, 0.26); */
+    box-shadow: 3px 3px 0px 0 rgba( 0, 0, 0, 0.32);
+    
+}
+
+
+.nav-sublist {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+
+    background-color: rgba(73, 72, 72, 0.836);
+    display:none;
+    box-shadow: 3px 3px 0px 0 rgba(0,0,0,0.32);
+    /* left: 5px;
+    top: 45px; */
+
+}
+
+.nav-sublist:hover {
+    display: block;
+
+}
+
+.nav-sublist-item {
+    list-style: none;
+   
+}
+
+ 
+
+.nav-sublist-item-link {
+    display: block;
+    color:rgb(214, 211, 16);
+    background-color:rgba(41, 40, 40, 0.836);
+    text-decoration: none;
+    padding: 10px 10px;
+    
+
+}
+
+.nav-sublist-item-link:hover {
+    color:rgb(8, 11, 39);
+    background-color:rgba(226, 216, 128, 0.555);
+
+}
+
+.tool_bar {
+    display: flex;
+    width: 290px;
+    height: 120;
+    background-color:rgba(173, 236, 245, 0.884);
+    justify-content: center;
+}
+
+.red_ball {
+    margin: 5px;
+    padding: 0;
+    width:  80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color:rgba(245, 0, 0, 0.555);
+    color:rgb(253, 253, 253);  
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 5px 5px 0 rgba( 112, 112, 112, 0.8);
+     
+}
+
+.blue_ball {
+    margin: 5px;
+    padding: 0;
+    width:  80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color:rgba(37, 0, 245, 0.555);
+    color:rgb(253, 253, 253);
+    font-size: 20px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    box-shadow: 3px 5px 5px 0 rgb(112, 112, 112);
+}
+
+.ui-message {
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 120;
+    background-color:rgba(173, 236, 245, 0.884);
+    justify-content: center;    
+}
+
+.ui-close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    border: 2px solid rgb(25, 4, 214); 
+    margin: 2px;
+
+}
+
+.ui-close:hover {
+     cursor: pointer;
+}

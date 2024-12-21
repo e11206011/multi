@@ -1,0 +1,19 @@
+
+.box {
+    background-color: rgb(48, 48, 48);
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-title {
+    font-size: 4em;
+    color: white;
+}
+
+.box_slogon {
+    font-size: 2em;
+    color: white;
+}
